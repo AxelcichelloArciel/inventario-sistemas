@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const InventarioPCs = () => {
+
+    const [pcs, setPcs] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:8888/pcs")
+            .then(res => res.json())
+            .then(pcs => setPcs(pcs))
+            .catch(err => console.error("Error al obtener PCs:", err));
+    }, []);
+
     return(
         <>
             <main>
@@ -12,48 +22,30 @@ const InventarioPCs = () => {
                         <thead className="bg-blue-300 text-gray-900">
                         <tr>
                             <th className="px-4 py-3 text-left">Planta</th>
-                            <th className="px-4 py-3 text-left">Categoría</th>
                             <th className="px-4 py-3 text-left">Marca</th>
                             <th className="px-4 py-3 text-left">Modelo</th>
                             <th className="px-4 py-3 text-left">Usuario</th>
                             <th className="px-4 py-3 text-left">N° Serie</th>
+                            <th className="px-4 py-3 text-left">Disponibilidad</th>
                         </tr>
                         </thead>
 
                         <tbody>
-                        <tr className="odd:bg-white even:bg-gray-50 hover:bg-blue-50 border-b border-gray-200">
-                            <td className="px-4 py-2">Planta 1</td>
-                            <td className="px-4 py-2">PC</td>
-                            <td className="px-4 py-2">Dell</td>
-                            <td className="px-4 py-2">OptiPlex 3070</td>
-                            <td className="px-4 py-2">Juan Perez</td>
-                            <td className="px-4 py-2">1234567890</td>
+                        {pcs.map(pc => (
+
+
+                        <tr key={pc.id_pc} className="odd:bg-white even:bg-gray-50 hover:bg-blue-50 border-b border-gray-200">
+                            <td className="px-4 py-2">{pc.planta_pc}</td>
+                            <td className="px-4 py-2">{pc.marca_pc}</td>
+                            <td className="px-4 py-2">{pc.modelo_pc}</td>
+                            <td className="px-4 py-2">{pc.usuario_pc}</td>
+                            <td className="px-4 py-2">{pc.serial_pc}</td>
+                            <td className={`px-4 py-2 font-semibold ${pc.disponibilidad_pc === 'false'? 'text-red-600' : 'text-green-600'}`}>
+                                {pc.disponibilidad_pc === 'false' ? 'No Disponible' : 'Disponible'}
+                            </td>
                         </tr>
-                        <tr className="odd:bg-white even:bg-gray-50 hover:bg-blue-50 border-b border-gray-200">
-                            <td className="px-4 py-2">Planta 1</td>
-                            <td className="px-4 py-2">PC</td>
-                            <td className="px-4 py-2">Dell</td>
-                            <td className="px-4 py-2">OptiPlex 3070</td>
-                            <td className="px-4 py-2">Juan Perez</td>
-                            <td className="px-4 py-2">1234567890</td>
-                        </tr>
-                        <tr className="odd:bg-white even:bg-gray-50 hover:bg-blue-50 border-b border-gray-200">
-                            <td className="px-4 py-2">Planta 1</td>
-                            <td className="px-4 py-2">PC</td>
-                            <td className="px-4 py-2">Dell</td>
-                            <td className="px-4 py-2">OptiPlex 3070</td>
-                            <td className="px-4 py-2">Juan Perez</td>
-                            <td className="px-4 py-2">1234567890</td>
-                        </tr>
-                        <tr className="odd:bg-white even:bg-gray-50 hover:bg-blue-50 border-b border-gray-200">
-                            <td className="px-4 py-2">Planta 1</td>
-                            <td className="px-4 py-2">PC</td>
-                            <td className="px-4 py-2">Dell</td>
-                            <td className="px-4 py-2">OptiPlex 3070</td>
-                            <td className="px-4 py-2">Juan Perez</td>
-                            <td className="px-4 py-2">1234567890</td>
-                        </tr>
-                        {/* Podés agregar más filas como esta */}
+                        ))}
+
                         </tbody>
                     </table>
 
