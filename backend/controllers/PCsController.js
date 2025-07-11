@@ -1,19 +1,27 @@
 import db from '../config/database.js';
 import * as PCs from '../model/PCs.js';
 
-// Para agregar una PC con 4 datos
 export async function addPC(req, res) {
-    const {nombre, estado, marca, modelo} = req.body;
+    const {
+        planta_pc, categoria_pc, marca_pc, modelo_pc, usuario_pc, serial_pc,
+        disponibilidad_pc, almacenamiento_pc, ram_pc, so_pc, procesador_pc,
+        monitor_pc, proveedor_pc, fecha_garantia_pc, entrada_pc, salida_pc, comentarios_pc
+    } = req.body;
 
-    if (!nombre || !estado || !marca || !modelo) {
-        return res.status(400).json({error: "Faltan campos obligatorios"});
+    if (!planta_pc || !categoria_pc || !marca_pc || !modelo_pc || !serial_pc) {
+        return res.status(400).json({ error: "Faltan campos obligatorios" });
     }
 
     try {
-        PCs.addPC({nombre, estado, marca, modelo});
-        res.status(200).json({message: "PC agregada (no se puede obtener el ID con el modelo actual)"});
+        const result = await PCs.addPC({
+            planta_pc, categoria_pc, marca_pc, modelo_pc, usuario_pc, serial_pc,
+            disponibilidad_pc, almacenamiento_pc, ram_pc, so_pc, procesador_pc,
+            monitor_pc, proveedor_pc, fecha_garantia_pc, entrada_pc, salida_pc, comentarios_pc
+        });
+        // Si tu función addPC retorna el ID, lo puedes enviar así:
+        res.status(201).json({ message: "PC agregada correctamente", id: result });
     } catch (error) {
-        res.status(500).json({message: "Error al agregar la PC", error: error.message});
+        res.status(500).json({ message: "Error al agregar la PC", error: error.message });
     }
 }
 
@@ -41,5 +49,17 @@ export async function getAllPCs(req, res) {
         res.status(200).json(results);
     } catch (error) {
         res.status(500).json({ error: "Error al obtener las PCs" });
+    }
+}
+
+
+export async function deletePC(req, res) {
+    const { id } = req.params;
+    try {
+        // Asume que tienes una función en el modelo para borrar por id
+        await PCs.deletePC(id);
+        res.status(200).json({ message: "PC eliminada correctamente" });
+    } catch (error) {
+        res.status(500).json({ message: "Error al eliminar la PC", error: error.message });
     }
 }

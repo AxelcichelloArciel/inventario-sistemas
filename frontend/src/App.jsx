@@ -5,6 +5,7 @@ import InventarioPCs from "./pages/InventarioPCs.jsx";
 import PC from "./pages/PC.jsx";
 import React from "react";
 import Inventario from "./pages/Inventario.jsx";
+import PCNueva from "./pages/PCNueva.jsx";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/inventarioPCs" element={<InventarioPCs />} />
             <Route path="/inventarioPCs/:id" element={<PC/>} />
+            <Route path="/inventarioPCs/nuevaPC" element={<PCNueva/>} />
             <Route path="/inventario" element={<Inventario/>} />
         </Routes>
 
