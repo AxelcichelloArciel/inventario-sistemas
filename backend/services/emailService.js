@@ -73,6 +73,29 @@ class EmailService{
             html
         });
     }
+
+
+    async sendDesvinculacionPCUsuario(usuario, marca, modelo, serial) {
+        const html = `
+            <div style="max-width:600px;margin:auto;padding:20px;background:#fff;border-radius:16px;box-shadow:0 2px 8px #eee;border:1px solid #eee;font-family:sans-serif;">
+              <h2 style="text-align:center;color:#dc2626;">🚫 Desvinculación de equipo</h2>
+              <p style="text-align: left ">El usuario <strong>${usuario}</strong> ha sido desvinculado del equipo:</p>
+              <div style="color:#333;font-size:15px;">
+                <p><strong>Marca:</strong> ${marca}</p>
+                <p><strong>Modelo:</strong> ${modelo}</p>
+                <p><strong>Serial:</strong> ${serial}</p>
+              </div>
+            </div>
+        `;
+
+        await this.transporter.sendMail({
+            from: this.from,
+            to: this.to,
+            subject: 'Desvinculación de PC',
+            html
+        });
+
+    }
 }
 
 export default new EmailService()

@@ -108,10 +108,13 @@ export async function updatePC(req, res) {
     if(req.body.disaffect){
         try{
             const pcDeBaja = await PCs.getPC(id);
+            const usuarioBaja = pcDeBaja.usuario_pc;
             pcDeBaja.disponibilidad_pc = true;
             pcDeBaja.usuario_pc = null;
 
             await PCs.updatePC(id, pcDeBaja);
+            await EmailService.sendDesvinculacionPCUsuario(usuarioBaja, pcDeBaja.marca_pc, pcDeBaja.modelo_pc, pcDeBaja.sendAltaPC());
+
         }catch (error) {
             return res.status(500).json({message: "Error al dar de baja la PC del usuario", error: error.message});
         }

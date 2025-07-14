@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94b81a4b-ce0c-4d4e-8417-ad86cd9774f6" name="Changes" comment="funciona, enviando el Email">
-      <change afterPath="$PROJECT_DIR$/backend/services/emailService.js" afterDir="false" />
+    <list default="true" id="94b81a4b-ce0c-4d4e-8417-ad86cd9774f6" name="Changes" comment="email modificado y funcionando.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/PCsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/PCsController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/emailService.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/emailService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/InventarioPCs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/InventarioPCs.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/PC.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/PC.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/PCNueva.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/PCNueva.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +94,7 @@
       <workItem from="1751983156911" duration="15051000" />
       <workItem from="1752156641921" duration="17820000" />
       <workItem from="1752234436158" duration="17425000" />
-      <workItem from="1752505440245" duration="10809000" />
+      <workItem from="1752505440245" duration="12374000" />
     </task>
     <task id="LOCAL-00001" summary="proyecto creado con vite y tailwindcss">
       <option name="closed" value="true" />
@@ -146,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752508040680</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="email modificado y funcionando.">
+      <option name="closed" value="true" />
+      <created>1752523489428</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1752523489428</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,7 +164,8 @@
     <MESSAGE value="vinculado el front con el back y creacion d ela base de datos" />
     <MESSAGE value="funciona el registro, eliminacion y visualizacion, falta la edicion" />
     <MESSAGE value="funciona, enviando el Email" />
-    <option name="LAST_COMMIT_MESSAGE" value="funciona, enviando el Email" />
+    <MESSAGE value="email modificado y funcionando." />
+    <option name="LAST_COMMIT_MESSAGE" value="email modificado y funcionando." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

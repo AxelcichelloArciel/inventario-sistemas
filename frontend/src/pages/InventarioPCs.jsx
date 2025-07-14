@@ -8,11 +8,15 @@ const InventarioPCs = () => {
 
     const [pcs, setPcs] = useState([]);
 
-    useEffect(() => {
+    const fetchPCs = () => {
         fetch("http://localhost:8888/pcs")
             .then(res => res.json())
             .then(pcs => setPcs(pcs))
             .catch(err => console.error("Error al obtener PCs:", err));
+    };
+
+    useEffect(() => {
+        fetchPCs();
     }, []);
 
     const handleDesafeccion = async (id) => {
@@ -20,7 +24,7 @@ const InventarioPCs = () => {
             await fetch(`http://localhost:8888/pcs/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ disaffect: true  })
+                body: JSON.stringify({ disaffect: true })
             });
 
             await Swal.fire({
@@ -28,6 +32,8 @@ const InventarioPCs = () => {
                 icon: "success",
                 draggable: false
             });
+
+            fetchPCs();
         } catch (err) {
             Swal.fire({
                 title: "Error!" + err.message,
