@@ -1,11 +1,39 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+
+function formatDate(dateStr) {
+    if (!dateStr) return "";
+    const d = new Date(dateStr);
+    if (isNaN(d)) return "";
+    return d.toISOString().slice(0, 10);
+}
 
 const PCNueva = () => {
-    const [form, setForm] = useState({
+    const location = useLocation();
+    const pcEdit = location.state;
+
+    const [form, setForm] = useState(() => pcEdit ? {
+        planta_pc: pcEdit.planta_pc || "",
+        categoria_pc: pcEdit.categoria_pc || "",
+        marca_pc: pcEdit.marca_pc || "",
+        modelo_pc: pcEdit.modelo_pc || "",
+        usuario_pc: pcEdit.usuario_pc || "",
+        serial_pc: pcEdit.serial_pc || "",
+        disponibilidad_pc: pcEdit.disponibilidad_pc || "",
+        almacenamiento_pc: pcEdit.almacenamiento_pc || "",
+        ram_pc: pcEdit.ram_pc || "",
+        so_pc: pcEdit.so_pc || "",
+        procesador_pc: pcEdit.procesador_pc || "",
+        monitor_pc: pcEdit.monitor_pc || "",
+        proveedor_pc: pcEdit.proveedor_pc || "",
+        fecha_garantia_pc: formatDate(pcEdit.fecha_garantia_pc),
+        entrada_pc: formatDate(pcEdit.entrada_pc),
+        salida_pc: formatDate(pcEdit.salida_pc),
+        comentarios_pc: pcEdit.comentarios_pc || ""
+    } : {
         planta_pc: "",
-        categoria_pc: "",
+        categoria_pc:"",
         marca_pc: "",
         modelo_pc: "",
         usuario_pc: "",
@@ -32,21 +60,23 @@ const PCNueva = () => {
 
     const handleSubmit = async e => {
         e.preventDefault();
+        const isEdit = !!pcEdit?.id_pc;
+        const url = isEdit
+            ? `http://localhost:8888/pcs/${pcEdit.id_pc}`
+            : "http://localhost:8888/addPC";
+        const method = isEdit ? "PUT" : "POST";
+
         try {
-            const res = await fetch("http://localhost:8888/addPC", {
-                method: "POST",
+            const res = await fetch(url, {
+                method,
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(form)
             });
-
-
-
-            const data = await res.json(); // <- extrae el cuerpo
-            console.log("Respuesta:", data);
+            const data = await res.json();
 
             if (res.ok) {
                 Swal.fire({
-                    title: "Añadido correctamente!",
+                    title: isEdit ? "¡Actualizado correctamente!" : "¡Añadido correctamente!",
                     icon: "success",
                     draggable: false
                 });
@@ -58,10 +88,9 @@ const PCNueva = () => {
                     draggable: false
                 });
             }
-
         } catch {
             Swal.fire({
-                title: "Error de conexion!",
+                title: "Error de conexión!",
                 icon: "error",
                 draggable: false
             });
@@ -83,8 +112,8 @@ const PCNueva = () => {
 
                         >
                             <option value="" disabled hidden>Selecciona una planta</option>
-                            <option value="santiago del estero">Santiago del Estero</option>
-                            <option value="san martin">San Martín</option>
+                            <option value="Santiago del Estero">Santiago del Estero</option>
+                            <option value="San Martin">San Martín</option>
                         </select>
                     </div>
                     <div>

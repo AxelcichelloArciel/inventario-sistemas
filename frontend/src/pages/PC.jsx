@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import {FaMicrochip, FaMemory, FaHdd, FaLaptop, FaUser, FaCalendarAlt} from 'react-icons/fa'
 import {BsCpu, BsDisplay, BsShieldCheck} from 'react-icons/bs'
-import {useParams} from 'react-router-dom'
+import {useParams, useNavigate} from 'react-router-dom'
 
 const PC = () => {
     const {id} = useParams();
     const [pc, setPc] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`http://localhost:8888/pcs/${id}`)
@@ -20,7 +21,18 @@ const PC = () => {
         <>
             <div className="max-w-5xl mx-auto mt-10 p-8 bg-white rounded-3xl shadow-xl border border-gray-200">
                 <h2 className="text-3xl font-bold mb-8 text-center text-blue-700">🖥️ Detalle del Equipo</h2>
+
+                <div className="flex justify-end mt-4">
+                    <button
+                        className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded"
+                        onClick={() => navigate('/inventarioPCs/nuevaPC', { state: pc })}
+                    >
+                        ✏️ Editar
+                    </button>
+                </div>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-800 text-sm">
+
                     <div><span className="font-semibold">📍 Planta:</span> {pc.planta_pc}</div>
                     <div><span className="font-semibold">📂 Categoría:</span> {pc.categoria_pc}</div>
                     <div><span className="font-semibold">🏷️ Marca:</span> {pc.marca_pc}</div>
@@ -55,7 +67,7 @@ const PC = () => {
                     </div>
                     <div className="flex items-center gap-2">
                         <BsDisplay className="text-orange-500"/> <span
-                        className="font-semibold">Monitor:</span> {pc.monitor_pc}"
+                        className="font-semibold">Monitor:</span> {pc.monitor_pc ? `${pc.monitor_pc}` : 'No asignado'}
                     </div>
                     <div><span className="font-semibold">🚚 Proveedor:</span> {pc.proveedor_pc}</div>
                     <div className="flex items-center gap-2">
