@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Link} from 'react-router-dom';
 import { FaEye, FaTrash } from 'react-icons/fa';
+import { MdPersonRemove } from 'react-icons/md';
 import Swal from "sweetalert2";
 
 const InventarioPCs = () => {
@@ -13,6 +14,28 @@ const InventarioPCs = () => {
             .then(pcs => setPcs(pcs))
             .catch(err => console.error("Error al obtener PCs:", err));
     }, []);
+
+    const handleDesafeccion = async (id) => {
+        try {
+            await fetch(`http://localhost:8888/pcs/${id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ disaffect: true  })
+            });
+
+            await Swal.fire({
+                title: "¡Desafectado correctamente!",
+                icon: "success",
+                draggable: false
+            });
+        } catch (err) {
+            Swal.fire({
+                title: "Error!" + err.message,
+                icon: "error",
+                draggable: true
+            });
+        }
+    };
 
     const handleDelete = async (marca, modelo, serial, id) => {
         const result = await Swal.fire({
@@ -78,17 +101,23 @@ const InventarioPCs = () => {
                         <td className="px-4 py-2">{pc.categoria_pc}</td>
                         <td className="px-4 py-2">{pc.marca_pc}</td>
                         <td className="px-4 py-2">{pc.modelo_pc}</td>
-                        <td className="px-4 py-2">{pc.usuario_pc}</td>
+                        <td className="px-4 py-2">{pc.usuario_pc ? `${pc.usuario_pc}` : '-'}</td>
                         <td className="px-4 py-2">{pc.serial_pc}</td>
                         <td className="px-4 py-2 font-semibold">
                             <div className="flex items-center justify-center gap-4">
                                 <span className={pc.disponibilidad_pc === 'false' ? 'text-red-600' : 'text-green-600'}>
                                     {pc.disponibilidad_pc === 'false' ? 'No Disponible' : 'Disponible'}
                                 </span>
-                                <Link to={`/inventarioPCs/${pc.id_pc}`}
-                                      className="text-blue-600 hover:text-blue-800" title="Ver detalles">
+                                <Link to={`/inventarioPCs/${pc.id_pc}`} className="text-blue-600 hover:text-blue-800" title="Ver detalles">
                                     <FaEye/>
                                 </Link>
+                                <button
+                                    className="text-gray-600 hover:text-gray-800"
+                                    title="Desafectar usuario"
+                                    onClick={() => handleDesafeccion(pc.id_pc)}
+                                >
+                                    <MdPersonRemove size={18}/>
+                                </button>
                                 <button
                                     className="text-red-600 hover:text-red-800"
                                     title="Eliminar registro"

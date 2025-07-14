@@ -12,6 +12,7 @@ function formatDate(dateStr) {
 const PCNueva = () => {
     const location = useLocation();
     const pcEdit = location.state;
+    const [loading, setLoading] = useState(false);
 
     const [form, setForm] = useState(() => pcEdit ? {
         planta_pc: pcEdit.planta_pc || "",
@@ -60,6 +61,7 @@ const PCNueva = () => {
 
     const handleSubmit = async e => {
         e.preventDefault();
+        setLoading(true); // Deshabilita el botón
         const isEdit = !!pcEdit?.id_pc;
         const url = isEdit
             ? `http://localhost:8888/pcs/${pcEdit.id_pc}`
@@ -94,6 +96,8 @@ const PCNueva = () => {
                 icon: "error",
                 draggable: false
             });
+        } finally {
+            setLoading(false); // Vuelve a habilitar el botón
         }
     };
 
@@ -195,8 +199,12 @@ const PCNueva = () => {
                     <label className="block mb-1 font-semibold text-gray-700">Comentarios</label>
                     <textarea className="input w-full" name="comentarios_pc" placeholder="Comentarios" value={form.comentarios_pc} onChange={handleChange} rows={3} />
                 </div>
-                <button type="submit" className="mt-8 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg w-full shadow transition">
-                    Guardar
+                <button
+                    type="submit"
+                    disabled={loading}
+                    className={`mt-8 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg w-full shadow transition ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+                >
+                    {loading ? "Guardando..." : "Guardar"}
                 </button>
             </form>
         </div>

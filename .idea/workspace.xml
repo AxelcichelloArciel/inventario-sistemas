@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94b81a4b-ce0c-4d4e-8417-ad86cd9774f6" name="Changes" comment="funciona el registro, eliminacion y visualizacion, falta la edicion">
+    <list default="true" id="94b81a4b-ce0c-4d4e-8417-ad86cd9774f6" name="Changes" comment="funciona, enviando el Email">
+      <change afterPath="$PROJECT_DIR$/backend/services/emailService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/PCsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/PCsController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/model/PCs.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/model/PCs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/InventarioPCs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/InventarioPCs.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/PC.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/PC.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/PCNueva.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/PCNueva.jsx" afterDir="false" />
     </list>
@@ -96,7 +96,7 @@
       <workItem from="1751983156911" duration="15051000" />
       <workItem from="1752156641921" duration="17820000" />
       <workItem from="1752234436158" duration="17425000" />
-      <workItem from="1752505440245" duration="1758000" />
+      <workItem from="1752505440245" duration="10809000" />
     </task>
     <task id="LOCAL-00001" summary="proyecto creado con vite y tailwindcss">
       <option name="closed" value="true" />
@@ -138,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752241769521</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="funciona, enviando el Email">
+      <option name="closed" value="true" />
+      <created>1752508040680</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1752508040680</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +157,19 @@
     <MESSAGE value="creado inventario de pc e insumos" />
     <MESSAGE value="vinculado el front con el back y creacion d ela base de datos" />
     <MESSAGE value="funciona el registro, eliminacion y visualizacion, falta la edicion" />
-    <option name="LAST_COMMIT_MESSAGE" value="funciona el registro, eliminacion y visualizacion, falta la edicion" />
+    <MESSAGE value="funciona, enviando el Email" />
+    <option name="LAST_COMMIT_MESSAGE" value="funciona, enviando el Email" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/frontend/src/pages/PC.jsx</url>
+          <line>33</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

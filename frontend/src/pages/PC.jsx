@@ -39,7 +39,7 @@ const PC = () => {
                     <div><span className="font-semibold">🆔 Modelo:</span> {pc.modelo_pc}</div>
                     <div className="flex items-center gap-2">
                         <FaUser className="text-blue-500"/> <span
-                        className="font-semibold">Usuario:</span> {pc.usuario_pc}
+                        className="font-semibold">Usuario:</span> {pc.usuario_pc ? `${pc.usuario_pc}` : '-'}
                     </div>
                     <div><span className="font-semibold">🔢 N° Serie:</span> {pc.serial_pc}</div>
                     <div className="flex items-center gap-2">
