@@ -31,7 +31,8 @@ const PCNueva = () => {
         fecha_garantia_pc: formatDate(pcEdit.fecha_garantia_pc),
         entrada_pc: formatDate(pcEdit.entrada_pc),
         salida_pc: formatDate(pcEdit.salida_pc),
-        comentarios_pc: pcEdit.comentarios_pc || ""
+        comentarios_pc: pcEdit.comentarios_pc || "",
+        estado_pc: pcEdit.estado_pc || "",
     } : {
         planta_pc: "",
         categoria_pc:"",
@@ -49,14 +50,20 @@ const PCNueva = () => {
         fecha_garantia_pc: "",
         entrada_pc: "",
         salida_pc: "",
-        comentarios_pc: ""
+        comentarios_pc: "",
+        estado_pc: ""
     });
 
     const navigate = useNavigate();
 
+    // Modifica handleChange
     const handleChange = e => {
         const { name, value } = e.target;
-        setForm({ ...form, [name]: value });
+        if (name === "estado_pc" && value === "reparacion") {
+            setForm({ ...form, estado_pc: value, disponibilidad_pc: "false" });
+        } else {
+            setForm({ ...form, [name]: value });
+        }
     };
 
     const handleSubmit = async e => {
@@ -152,8 +159,26 @@ const PCNueva = () => {
                         <input className="input w-full" name="serial_pc" placeholder="N° Serie" value={form.serial_pc} onChange={handleChange}  />
                     </div>
                     <div>
+                        <label className="block mb-1 font-semibold text-gray-700">Estado</label>
+                        <select
+                            className="input w-full"
+                            name="estado_pc"
+                            value={form.estado_pc}
+                            onChange={handleChange}
+                        >
+                            <option value="funcional">Funcional</option>
+                            <option value="reparacion">Para reparar</option>
+                        </select>
+                    </div>
+                    <div>
                         <label className="block mb-1 font-semibold text-gray-700">Disponibilidad</label>
-                        <select className="input w-full" name="disponibilidad_pc" value={form.disponibilidad_pc} onChange={handleChange}>
+                        <select
+                            className="input w-full"
+                            name="disponibilidad_pc"
+                            value={form.disponibilidad_pc}
+                            onChange={handleChange}
+                            disabled={form.estado_pc === "reparacion"}
+                        >
                             <option value="true">Disponible</option>
                             <option value="false">No disponible</option>
                         </select>

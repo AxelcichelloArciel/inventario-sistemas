@@ -21,7 +21,8 @@ export async function addPC(req, res) {
         fecha_garantia_pc,
         entrada_pc,
         salida_pc,
-        comentarios_pc
+        comentarios_pc,
+        estado_pc
     } = req.body;
 
     console.log(disponibilidad_pc)
@@ -48,7 +49,8 @@ export async function addPC(req, res) {
             fecha_garantia_pc,
             entrada_pc,
             salida_pc,
-            comentarios_pc
+            comentarios_pc,
+            estado_pc
         });
 
 
@@ -113,7 +115,12 @@ export async function updatePC(req, res) {
             pcDeBaja.usuario_pc = null;
 
             await PCs.updatePC(id, pcDeBaja);
-            await EmailService.sendDesvinculacionPCUsuario(usuarioBaja, pcDeBaja.marca_pc, pcDeBaja.modelo_pc, pcDeBaja.sendAltaPC());
+            await EmailService.sendDesvinculacionPCUsuario(
+                usuarioBaja,
+                pcDeBaja.marca_pc,
+                pcDeBaja.modelo_pc,
+                pcDeBaja.serial_pc
+            );
 
         }catch (error) {
             return res.status(500).json({message: "Error al dar de baja la PC del usuario", error: error.message});
@@ -136,7 +143,8 @@ export async function updatePC(req, res) {
         fecha_garantia_pc,
         entrada_pc,
         salida_pc,
-        comentarios_pc
+        comentarios_pc,
+        estado_pc
     } = req.body;
 
     if (!id || !planta_pc || !categoria_pc || !marca_pc || !modelo_pc || !serial_pc) {
@@ -161,7 +169,8 @@ export async function updatePC(req, res) {
             fecha_garantia_pc,
             entrada_pc,
             salida_pc,
-            comentarios_pc
+            comentarios_pc,
+            estado_pc
         });
         res.status(200).json({message: "PC actualizada correctamente", id: result});
     } catch (error) {

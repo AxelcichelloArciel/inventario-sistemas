@@ -28,13 +28,13 @@ export async function addPC(data) {
         INSERT INTO pcs (
             planta_pc, categoria_pc, marca_pc, modelo_pc, usuario_pc, serial_pc,
             disponibilidad_pc, almacenamiento_pc, ram_pc, so_pc, procesador_pc,
-            monitor_pc, proveedor_pc, fecha_garantia_pc, entrada_pc, salida_pc, comentarios_pc
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            monitor_pc, proveedor_pc, fecha_garantia_pc, entrada_pc, salida_pc, comentarios_pc,estado_pc
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)
     `;
     const values = [
         data.planta_pc, data.categoria_pc, data.marca_pc, data.modelo_pc, data.usuario_pc, data.serial_pc,
         data.disponibilidad_pc, data.almacenamiento_pc, data.ram_pc, data.so_pc, data.procesador_pc,
-        data.monitor_pc, data.proveedor_pc, data.fecha_garantia_pc, data.entrada_pc, data.salida_pc, data.comentarios_pc
+        data.monitor_pc, data.proveedor_pc, data.fecha_garantia_pc, data.entrada_pc, data.salida_pc, data.comentarios_pc, data.estado_pc
     ];
 
     const result = await db.run(query, values);
@@ -55,7 +55,7 @@ export async function updatePC(id, data) {
             almacenamiento_pc = ?, ram_pc = ?, so_pc = ?,
             procesador_pc = ?, monitor_pc = ?, proveedor_pc = ?,
             fecha_garantia_pc = ?, entrada_pc = ?, salida_pc = ?,
-            comentarios_pc = ?
+            comentarios_pc = ?, estado_pc = ?
         WHERE id_pc = ?
     `;
     const values = [
@@ -64,7 +64,7 @@ export async function updatePC(id, data) {
         data.almacenamiento_pc, data.ram_pc, data.so_pc,
         data.procesador_pc, data.monitor_pc, data.proveedor_pc,
         data.fecha_garantia_pc, data.entrada_pc, data.salida_pc,
-        data.comentarios_pc, id
+        data.comentarios_pc,data.estado_pc, id
     ];
 
     await db.run(query, values);

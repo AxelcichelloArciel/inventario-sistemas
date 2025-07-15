@@ -101,13 +101,26 @@ const InventarioPCs = () => {
                     </thead>
 
                     <tbody>
-                    {pcs.map(pc => (<tr key={pc.id_pc}
-                                        className="odd:bg-white even:bg-gray-50 hover:bg-blue-50 border-b border-gray-200">
+                    {pcs.map(pc => (
+                        <tr
+                            key={pc.id_pc}
+                            className={
+                                pc.estado_pc === "reparacion"
+                                    ? "bg-red-300 border-b border-gray-200 hover:bg-red-200"
+                                    : "odd:bg-white even:bg-gray-50 hover:bg-blue-50 border-b border-gray-200"
+                            }
+                        >
                         <td className="px-4 py-2">{pc.planta_pc}</td>
                         <td className="px-4 py-2">{pc.categoria_pc}</td>
                         <td className="px-4 py-2">{pc.marca_pc}</td>
                         <td className="px-4 py-2">{pc.modelo_pc}</td>
-                        <td className="px-4 py-2">{pc.usuario_pc ? `${pc.usuario_pc}` : '-'}</td>
+                        <td className="px-4 py-2">
+                            {pc.usuario_pc
+                                ? pc.usuario_pc === "reparacion"
+                                    ? "REPARACION"
+                                    : pc.usuario_pc
+                                : '-'}
+                        </td>
                         <td className="px-4 py-2">{pc.serial_pc}</td>
                         <td className="px-4 py-2 font-semibold">
                             <div className="flex items-center justify-center gap-4">
@@ -117,13 +130,15 @@ const InventarioPCs = () => {
                                 <Link to={`/inventarioPCs/${pc.id_pc}`} className="text-blue-600 hover:text-blue-800" title="Ver detalles">
                                     <FaEye/>
                                 </Link>
-                                <button
-                                    className="text-gray-600 hover:text-gray-800"
-                                    title="Desafectar usuario"
-                                    onClick={() => handleDesafeccion(pc.id_pc)}
-                                >
-                                    <MdPersonRemove size={18}/>
-                                </button>
+                                {pc.usuario_pc && pc.estado_pc !== "reparacion" && (
+                                    <button
+                                        className="text-gray-600 hover:text-gray-800"
+                                        title="Desafectar usuario"
+                                        onClick={() => handleDesafeccion(pc.id_pc)}
+                                    >
+                                        <MdPersonRemove size={18}/>
+                                    </button>
+                                )}
                                 <button
                                     className="text-red-600 hover:text-red-800"
                                     title="Eliminar registro"
