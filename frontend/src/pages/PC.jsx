@@ -44,7 +44,7 @@ const PC = () => {
                     <div><span className="font-semibold">🔢 N° Serie:</span> {pc.serial_pc}</div>
                     <div className="flex items-center gap-2">
                         <BsShieldCheck className="text-green-600"/> <span
-                        className="font-semibold">Garantía:</span> {pc.fecha_garantia_pc}
+                        className="font-semibold">Garantía:</span> {pc.fecha_garantia_pc ? pc.fecha_garantia_pc : '-'}
                     </div>
 
 

@@ -104,11 +104,11 @@ export async function deletePC(req, res) {
 
 
 export async function updatePC(req, res) {
-    console.log(req.params.length)
-    const {id} = req.params;
+    const { id } = req.params;
 
-    if(req.body.disaffect){
-        try{
+
+    if (req.body.disaffect) {
+        try {
             const pcDeBaja = await PCs.getPC(id);
             const usuarioBaja = pcDeBaja.usuario_pc;
             pcDeBaja.disponibilidad_pc = "true";
@@ -121,11 +121,12 @@ export async function updatePC(req, res) {
                 pcDeBaja.modelo_pc,
                 pcDeBaja.serial_pc
             );
-
-        }catch (error) {
-            return res.status(500).json({message: "Error al dar de baja la PC del usuario", error: error.message});
+            return res.status(200).json({ message: "PC desafectada correctamente" });
+        } catch (error) {
+            return res.status(500).json({ message: "Error al dar de baja la PC del usuario", error: error.message });
         }
     }
+
     const {
         planta_pc,
         categoria_pc,
@@ -148,7 +149,7 @@ export async function updatePC(req, res) {
     } = req.body;
 
     if (!id || !planta_pc || !categoria_pc || !marca_pc || !modelo_pc || !serial_pc) {
-        return res.status(400).json({error: "Faltan campos obligatorios"});
+        return res.status(400).json({ error: "Faltan campos obligatorios" });
     }
 
     try {
@@ -172,8 +173,8 @@ export async function updatePC(req, res) {
             comentarios_pc,
             estado_pc
         });
-        res.status(200).json({message: "PC actualizada correctamente", id: result});
+        res.status(200).json({ message: "PC actualizada correctamente", id: result });
     } catch (error) {
-        res.status(500).json({message: "Error al actualizar la PC", error: error.message});
+        res.status(500).json({ message: "Error al actualizar la PC", error: error.message });
     }
 }

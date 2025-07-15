@@ -114,13 +114,14 @@ const PCNueva = () => {
             <form onSubmit={handleSubmit} className="bg-blue-50 p-8 rounded-xl shadow-lg">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label className="block mb-1 font-semibold text-gray-700">Planta</label>
+                        <label className="block mb-1 font-semibold text-gray-700">
+                            Planta <span className="text-red-500">*</span>
+                        </label>
                         <select
                             className="input w-full"
                             name="planta_pc"
                             value={form.planta_pc}
                             onChange={handleChange}
-
                         >
                             <option value="" disabled hidden>Selecciona una planta</option>
                             <option value="Santiago del Estero">Santiago del Estero</option>
@@ -128,13 +129,14 @@ const PCNueva = () => {
                         </select>
                     </div>
                     <div>
-                        <label className="block mb-1 font-semibold text-gray-700">Categoría</label>
+                        <label className="block mb-1 font-semibold text-gray-700">
+                            Categoría <span className="text-red-500">*</span>
+                        </label>
                         <select
                             className="input w-full"
                             name="categoria_pc"
                             value={form.categoria_pc}
                             onChange={handleChange}
-
                         >
                             <option value="" disabled hidden>Selecciona una categoría</option>
                             <option value="Notebook">Notebook</option>
@@ -143,21 +145,28 @@ const PCNueva = () => {
                         </select>
                     </div>
                     <div>
-                        <label className="block mb-1 font-semibold text-gray-700">Marca</label>
+                        <label className="block mb-1 font-semibold text-gray-700">
+                            Marca <span className="text-red-500">*</span>
+                        </label>
                         <input className="input w-full" name="marca_pc" placeholder="Marca" value={form.marca_pc} onChange={handleChange}  />
                     </div>
                     <div>
-                        <label className="block mb-1 font-semibold text-gray-700">Modelo</label>
+                        <label className="block mb-1 font-semibold text-gray-700">
+                            Modelo <span className="text-red-500">*</span>
+                        </label>
                         <input className="input w-full" name="modelo_pc" placeholder="Modelo" value={form.modelo_pc} onChange={handleChange}  />
+                    </div>
+                    <div>
+                        <label className="block mb-1 font-semibold text-gray-700">
+                            N° Serie <span className="text-red-500">*</span>
+                        </label>
+                        <input className="input w-full" name="serial_pc" placeholder="N° Serie" value={form.serial_pc} onChange={handleChange}  />
                     </div>
                     <div>
                         <label className="block mb-1 font-semibold text-gray-700">Usuario</label>
                         <input className="input w-full" name="usuario_pc" placeholder="Usuario" value={form.usuario_pc} onChange={handleChange} />
                     </div>
-                    <div>
-                        <label className="block mb-1 font-semibold text-gray-700">N° Serie</label>
-                        <input className="input w-full" name="serial_pc" placeholder="N° Serie" value={form.serial_pc} onChange={handleChange}  />
-                    </div>
+
                     <div>
                         <label className="block mb-1 font-semibold text-gray-700">Estado</label>
                         <select
