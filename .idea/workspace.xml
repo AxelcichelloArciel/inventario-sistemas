@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94b81a4b-ce0c-4d4e-8417-ad86cd9774f6" name="Changes" comment="agrego ordenamiento de tablas">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/PCsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/PCsController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/navBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/navBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/InventarioPCs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/InventarioPCs.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/PC.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/PC.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/PCNueva.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/PCNueva.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="94b81a4b-ce0c-4d4e-8417-ad86cd9774f6" name="Changes" comment="funcionando, listo para desplegar en el servidor la primer parte" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -100,7 +91,7 @@
       <workItem from="1752156641921" duration="17820000" />
       <workItem from="1752234436158" duration="17425000" />
       <workItem from="1752505440245" duration="12664000" />
-      <workItem from="1752587868415" duration="10754000" />
+      <workItem from="1752587868415" duration="11142000" />
     </task>
     <task id="LOCAL-00001" summary="proyecto creado con vite y tailwindcss">
       <option name="closed" value="true" />
@@ -190,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752603094244</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="funcionando, listo para desplegar en el servidor la primer parte">
+      <option name="closed" value="true" />
+      <created>1752605532358</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1752605532358</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,7 +205,8 @@
     <MESSAGE value="funciona la desafeccion tambien" />
     <MESSAGE value="agregado estetico" />
     <MESSAGE value="agrego ordenamiento de tablas" />
-    <option name="LAST_COMMIT_MESSAGE" value="agrego ordenamiento de tablas" />
+    <MESSAGE value="funcionando, listo para desplegar en el servidor la primer parte" />
+    <option name="LAST_COMMIT_MESSAGE" value="funcionando, listo para desplegar en el servidor la primer parte" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
