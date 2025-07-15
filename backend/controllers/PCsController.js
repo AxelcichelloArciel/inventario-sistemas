@@ -111,8 +111,8 @@ export async function updatePC(req, res) {
         try{
             const pcDeBaja = await PCs.getPC(id);
             const usuarioBaja = pcDeBaja.usuario_pc;
-            pcDeBaja.disponibilidad_pc = true;
-            pcDeBaja.usuario_pc = null;
+            pcDeBaja.disponibilidad_pc = "true";
+            pcDeBaja.usuario_pc = "";
 
             await PCs.updatePC(id, pcDeBaja);
             await EmailService.sendDesvinculacionPCUsuario(

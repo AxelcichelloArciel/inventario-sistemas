@@ -21,7 +21,7 @@ const PCNueva = () => {
         modelo_pc: pcEdit.modelo_pc || "",
         usuario_pc: pcEdit.usuario_pc || "",
         serial_pc: pcEdit.serial_pc || "",
-        disponibilidad_pc: pcEdit.disponibilidad_pc || "",
+        disponibilidad_pc: pcEdit.disponibilidad_pc || "true",
         almacenamiento_pc: pcEdit.almacenamiento_pc || "",
         ram_pc: pcEdit.ram_pc || "",
         so_pc: pcEdit.so_pc || "",
@@ -32,7 +32,7 @@ const PCNueva = () => {
         entrada_pc: formatDate(pcEdit.entrada_pc),
         salida_pc: formatDate(pcEdit.salida_pc),
         comentarios_pc: pcEdit.comentarios_pc || "",
-        estado_pc: pcEdit.estado_pc || "",
+        estado_pc: pcEdit.estado_pc || "funcional",
     } : {
         planta_pc: "",
         categoria_pc:"",
@@ -40,7 +40,7 @@ const PCNueva = () => {
         modelo_pc: "",
         usuario_pc: "",
         serial_pc: "",
-        disponibilidad_pc: "",
+        disponibilidad_pc: "true",
         almacenamiento_pc: "",
         ram_pc: "",
         so_pc: "",
@@ -51,7 +51,7 @@ const PCNueva = () => {
         entrada_pc: "",
         salida_pc: "",
         comentarios_pc: "",
-        estado_pc: ""
+        estado_pc: "funcional"
     });
 
     const navigate = useNavigate();

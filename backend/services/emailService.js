@@ -47,15 +47,15 @@ class EmailService{
                 <div><strong>📂 Categoría:</strong> ${categoria_pc}</div>
                 <div><strong>🏷️ Marca:</strong> ${marca_pc}</div>
                 <div><strong>🆔 Modelo:</strong> ${modelo_pc}</div>
-                <div><strong>👤 Usuario:</strong> ${usuario_pc}</div>
+                <div><strong>👤 Usuario:</strong> ${usuario_pc ? usuario_pc : '-'}</div>
                 <div><strong>🔢 N° Serie:</strong> ${serial_pc}</div>
-                <div><strong>🛡️ Garantía:</strong> ${fecha_garantia_pc}</div>
-                <div><strong>💾 Almacenamiento:</strong> ${almacenamiento_pc} GB</div>
-                <div><strong>🧠 RAM:</strong> ${ram_pc} GB</div>
-                <div><strong>💻 Sistema Operativo:</strong> ${so_pc}</div>
-                <div><strong>🖥️ Procesador:</strong> ${procesador_pc}</div>
+                <div><strong>🛡️ Garantía:</strong> ${fecha_garantia_pc ? fecha_garantia_pc : '-'}</div>
+                <div><strong>💾 Almacenamiento:</strong> ${almacenamiento_pc ? almacenamiento_pc + "GB" : '-'}</div>
+                <div><strong>🧠 RAM:</strong> ${ram_pc ? ram_pc + "GB" : '-'}</div>
+                <div><strong>💻 Sistema Operativo:</strong> ${so_pc ? so_pc : '-'}</div>
+                <div><strong>🖥️ Procesador:</strong> ${procesador_pc ? procesador_pc : '-'}</div>
                 <div><strong>🖥️ Monitor:</strong> ${monitor_pc ? monitor_pc : 'No asignado'}</div>
-                <div><strong>🚚 Proveedor:</strong> ${proveedor_pc}</div>
+                <div><strong>🚚 Proveedor:</strong> ${proveedor_pc ? proveedor_pc : '-'}</div>
                 <div><strong>📅 Entrada:</strong> ${entrada_pc || '-'}</div>
                 <div><strong>📅 Salida:</strong> ${salida_pc || '-'}</div>
                 <div><strong>✅ Disponible:</strong> <span style="color:${disponible ? '#16a34a' : '#dc2626'};font-weight:bold;">${disponible ? 'Disponible' : 'No disponible'}</span></div>
