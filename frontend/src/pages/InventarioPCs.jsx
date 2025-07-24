@@ -8,31 +8,9 @@ import * as XLSX from "xlsx";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 
-// Render inputs de filtro por columna
-const FilterComponent = ({ columnKey, label, value, onChange }) => (
-    <input
-        className="input w-full mb-1"
-        placeholder={`Filtrar ${label}`}
-        value={value}
-        onChange={e => onChange(columnKey, e.target.value)}
-    />
-);
-
 const InventarioPCs = () => {
     const [pcs, setPcs] = useState([]);
     const [filterText, setFilterText] = useState("");
-    const [columnFilters, setColumnFilters] = useState({
-        planta_pc: "",
-        categoria_pc: "",
-        marca_pc: "",
-        modelo_pc: "",
-        usuario_pc: "",
-        serial_pc: "",
-    });
-
-    const handleColumnFilterChange = (key, value) => {
-        setColumnFilters(prev => ({ ...prev, [key]: value }));
-    };
 
     const fetchPCs = () => {
         fetch("http://localhost:8888/pcs")
@@ -93,28 +71,20 @@ const InventarioPCs = () => {
                 } else {
                     Swal.fire("Error", "No se pudo eliminar la PC.", "error");
                 }
-            } catch (err) {
+            } catch {
                 Swal.fire("Error", "Ocurrió un error al eliminar.", "error");
             }
         }
     };
 
-    // Filtros por columna
+    // Filtro global
     const filteredItems = pcs.filter(item =>
-        (item.planta_pc || "").toLowerCase().includes(columnFilters.planta_pc.toLowerCase()) &&
-        (item.categoria_pc || "").toLowerCase().includes(columnFilters.categoria_pc.toLowerCase()) &&
-        (item.marca_pc || "").toLowerCase().includes(columnFilters.marca_pc.toLowerCase()) &&
-        (item.modelo_pc || "").toLowerCase().includes(columnFilters.modelo_pc.toLowerCase()) &&
-        (item.usuario_pc || "").toLowerCase().includes(columnFilters.usuario_pc.toLowerCase()) &&
-        (item.serial_pc || "").toLowerCase().includes(columnFilters.serial_pc.toLowerCase()) &&
-        (
-            (item.planta_pc || "").toLowerCase().includes(filterText.toLowerCase()) ||
-            (item.categoria_pc || "").toLowerCase().includes(filterText.toLowerCase()) ||
-            (item.marca_pc || "").toLowerCase().includes(filterText.toLowerCase()) ||
-            (item.modelo_pc || "").toLowerCase().includes(filterText.toLowerCase()) ||
-            (item.usuario_pc || "").toLowerCase().includes(filterText.toLowerCase()) ||
-            (item.serial_pc || "").toLowerCase().includes(filterText.toLowerCase())
-        )
+        (item.planta_pc || "").toLowerCase().includes(filterText.toLowerCase()) ||
+        (item.categoria_pc || "").toLowerCase().includes(filterText.toLowerCase()) ||
+        (item.marca_pc || "").toLowerCase().includes(filterText.toLowerCase()) ||
+        (item.modelo_pc || "").toLowerCase().includes(filterText.toLowerCase()) ||
+        (item.usuario_pc || "").toLowerCase().includes(filterText.toLowerCase()) ||
+        (item.serial_pc || "").toLowerCase().includes(filterText.toLowerCase())
     );
 
     // Exportar a Excel
@@ -228,13 +198,13 @@ const InventarioPCs = () => {
         {
             when: row => row.estado_pc === "reparacion",
             style: {
-                backgroundColor: "#fee2e2", // rojo claro normal
+                backgroundColor: "#fee2e2",
                 color: "#b91c1c",
                 fontWeight: "bold",
                 transition: "background 0.2s",
             },
             hoverStyle: {
-                backgroundColor: "#fca5a5", // rojo más claro al hacer hover
+                backgroundColor: "#fca5a5",
                 color: "#b91c1c",
             }
         }
@@ -242,47 +212,39 @@ const InventarioPCs = () => {
 
     return (
         <main>
-            <div className="container mx-auto p-6">
-                <div className="flex items-center justify-between mb-4">
+            <div className="container mx-auto p-2 sm:p-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4">
                     <div>
-                        <h2 className="text-2xl font-bold">Inventario de computadoras</h2>
-                        <p className="text-gray-700">Aquí podrás gestionar el inventario de PCs vinculadas al dominio.</p>
+                        <h2 className="text-xl sm:text-2xl font-bold">Inventario de computadoras</h2>
+                        <p className="text-gray-700 text-sm sm:text-base">Aquí podrás gestionar el inventario de PCs vinculadas al dominio.</p>
                     </div>
                     <Link
                         to="/inventarioPCs/nuevaPC"
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded shadow transition"
+                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-2 sm:px-4 rounded shadow transition text-sm sm:text-base mt-2 sm:mt-0"
                     >
                         + Añadir PC
                     </Link>
                 </div>
-                <div className="flex gap-2 mb-2">
+                <div className="flex flex-col sm:flex-row gap-2 mb-2">
                     <button
-                        className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded shadow"
+                        className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-2 sm:px-4 rounded shadow text-sm sm:text-base"
                         onClick={exportToExcel}
                     >
                         Exportar Excel
                     </button>
                     <button
-                        className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded shadow"
+                        className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-2 sm:px-4 rounded shadow text-sm sm:text-base"
                         onClick={exportToPDF}
                     >
                         Exportar PDF
                     </button>
                 </div>
                 <input
-                    className="input mb-2 w-full"
-                    placeholder="Buscar global..."
+                    className="input border-2 border-gray-200 my-2 w-full text-lg sm:text-xl py-3 px-4 rounded-lg"
+                    placeholder="Buscar..."
                     value={filterText}
                     onChange={e => setFilterText(e.target.value)}
                 />
-                <div className="grid grid-cols-6 gap-2 mb-2">
-                    <FilterComponent columnKey="planta_pc" label="Planta" value={columnFilters.planta_pc} onChange={handleColumnFilterChange} />
-                    <FilterComponent columnKey="categoria_pc" label="Categoria" value={columnFilters.categoria_pc} onChange={handleColumnFilterChange} />
-                    <FilterComponent columnKey="marca_pc" label="Marca" value={columnFilters.marca_pc} onChange={handleColumnFilterChange} />
-                    <FilterComponent columnKey="modelo_pc" label="Modelo" value={columnFilters.modelo_pc} onChange={handleColumnFilterChange} />
-                    <FilterComponent columnKey="usuario_pc" label="Usuario" value={columnFilters.usuario_pc} onChange={handleColumnFilterChange} />
-                    <FilterComponent columnKey="serial_pc" label="N° Serie" value={columnFilters.serial_pc} onChange={handleColumnFilterChange} />
-                </div>
                 <DataTable
                     columns={columns}
                     data={filteredItems}
