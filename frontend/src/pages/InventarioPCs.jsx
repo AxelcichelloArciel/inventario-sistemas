@@ -223,6 +223,23 @@ const InventarioPCs = () => {
         }
     ];
 
+    // Estilos condicionales para filas en reparación
+    const conditionalRowStyles = [
+        {
+            when: row => row.estado_pc === "reparacion",
+            style: {
+                backgroundColor: "#fee2e2", // rojo claro normal
+                color: "#b91c1c",
+                fontWeight: "bold",
+                transition: "background 0.2s",
+            },
+            hoverStyle: {
+                backgroundColor: "#fca5a5", // rojo más claro al hacer hover
+                color: "#b91c1c",
+            }
+        }
+    ];
+
     return (
         <main>
             <div className="container mx-auto p-6">
@@ -273,6 +290,7 @@ const InventarioPCs = () => {
                     highlightOnHover
                     striped
                     responsive
+                    conditionalRowStyles={conditionalRowStyles}
                 />
             </div>
         </main>
