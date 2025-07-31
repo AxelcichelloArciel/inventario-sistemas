@@ -1,11 +1,11 @@
 import Navbar from "./components/navBar.jsx";
 import {Route, Routes} from 'react-router-dom'
 import Home from './pages/Home.jsx'
-import InventarioPCs from "./pages/InventarioPCs.jsx";
-import PC from "./pages/PC.jsx";
+import InventarioPCs from "./pages/PCs/InventarioPCs.jsx";
+import DetallePC from "./pages/PCs/DetallePC.jsx";
 import React from "react";
-import Inventario from "./pages/Inventario.jsx";
-import PCNueva from "./pages/PCNueva.jsx";
+import PCNueva from "./pages/PCs/PCNueva.jsx";
+import InventarioInsumos from "./pages/Insumos/InventarioInsumos.jsx";
 
 
 function App() {
@@ -14,10 +14,14 @@ function App() {
         <Navbar />
         <Routes>
             <Route path="/" element={<Home />} />
+
+            // Rutas inventario PCs
             <Route path="/inventarioPCs" element={<InventarioPCs />} />
-            <Route path="/inventarioPCs/:id" element={<PC/>} />
+            <Route path="/inventarioPCs/:id" element={<DetallePC/>} />
             <Route path="/inventarioPCs/nuevaPC" element={<PCNueva/>} />
-            <Route path="/inventario" element={<Inventario/>} />
+
+            // Rutas inventario insumos
+            <Route path="/inventarioInsumos" element={<InventarioInsumos/>} />
         </Routes>
 
         </>

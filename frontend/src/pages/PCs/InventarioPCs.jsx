@@ -21,11 +21,11 @@ const InventarioPCs = () => {
 
     useEffect(() => { fetchPCs(); }, []);
 
-    // Desafectar usuario de la PC
+    // Desafectar usuario de la DetallePC
     const handleDesafeccion = async (id) => {
         const confirm = await Swal.fire({
             title: "¿Desafectar usuario?",
-            text: "¿Seguro que quieres desafectar el usuario de esta PC?",
+            text: "¿Seguro que quieres desafectar el usuario de esta DetallePC?",
             icon: "warning",
             showCancelButton: true,
             confirmButtonText: "Sí, desafectar",
@@ -50,10 +50,10 @@ const InventarioPCs = () => {
         }
     };
 
-    // Eliminar PC
+    // Eliminar DetallePC
     const handleDelete = async (marca, modelo, serial, id) => {
         const confirm = await Swal.fire({
-            title: "¿Eliminar PC?",
+            title: "¿Eliminar DetallePC?",
             text: `¿Seguro que quieres eliminar la PC ${marca} ${modelo} (${serial})?`,
             icon: "warning",
             showCancelButton: true,
@@ -66,10 +66,10 @@ const InventarioPCs = () => {
                     method: "DELETE"
                 });
                 if (res.ok) {
-                    Swal.fire("Eliminado", "La PC fue eliminada.", "success");
+                    Swal.fire("Eliminado", "La DetallePC fue eliminada.", "success");
                     fetchPCs();
                 } else {
-                    Swal.fire("Error", "No se pudo eliminar la PC.", "error");
+                    Swal.fire("Error", "No se pudo eliminar la DetallePC.", "error");
                 }
             } catch {
                 Swal.fire("Error", "Ocurrió un error al eliminar.", "error");

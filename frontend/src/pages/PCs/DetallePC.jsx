@@ -3,7 +3,7 @@ import {FaMicrochip, FaMemory, FaHdd, FaLaptop, FaUser, FaCalendarAlt} from 'rea
 import {BsCpu, BsDisplay, BsShieldCheck} from 'react-icons/bs'
 import {useParams, useNavigate} from 'react-router-dom'
 
-const PC = () => {
+const DetallePC = () => {
     const {id} = useParams();
     const [pc, setPc] = useState(null);
     const navigate = useNavigate();
@@ -12,7 +12,7 @@ const PC = () => {
         fetch(`http://localhost:8888/pcs/${id}`)
             .then(res => res.json())
             .then(data => setPc(data))
-            .catch(err => console.error("Error al obtener la PC:", err));
+            .catch(err => console.error("Error al obtener la DetallePC:", err));
     }, [id]);
 
     if (!pc) return <div className="text-center mt-10">Cargando...</div>;
@@ -101,4 +101,4 @@ const PC = () => {
     </>)
 }
 
-export default PC
+export default DetallePC

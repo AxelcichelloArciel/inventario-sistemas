@@ -69,7 +69,7 @@ class EmailService{
         await this.transporter.sendMail({
             from: this.from,
             to: this.to,
-            subject: 'Nuevo registro de PC',
+            subject: 'Nuevo registro de DetallePC',
             html
         });
     }
@@ -91,7 +91,7 @@ class EmailService{
         await this.transporter.sendMail({
             from: this.from,
             to: this.to,
-            subject: 'Desvinculación de PC',
+            subject: 'Desvinculación de DetallePC',
             html
         });
 

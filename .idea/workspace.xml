@@ -4,9 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94b81a4b-ce0c-4d4e-8417-ad86cd9774f6" name="Changes" comment="se agrega control del serial y alerta de maquina para reparar en el listado del inventario">
+    <list default="true" id="94b81a4b-ce0c-4d4e-8417-ad86cd9774f6" name="Changes" comment="cambios esteticos en el listado de PCs">
+      <change afterPath="$PROJECT_DIR$/backend/model/Insumo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Insumos/InventarioInsumos.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/InventarioPCs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/InventarioPCs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/PCsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/PCsController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/emailService.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/emailService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/navBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/navBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Inventario.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/InventarioMonitores.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/InsumosController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/InventarioPCs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/PCs/InventarioPCs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/PC.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/PCs/DetallePC.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/PCNueva.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/PCs/PCNueva.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,34 +52,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/acichello/IdeaProjects/inventario-sistemas&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.npm dev.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\acichello\\AppData\\Local\\Programs\\IntelliJ IDEA Ultimate\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/acichello/IdeaProjects/inventario-sistemas",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "npm.back.executor": "Run",
+    "npm.dev.executor": "Run",
+    "npm.npm dev.executor": "Run",
+    "ts.external.directory.path": "C:\\Users\\acichello\\AppData\\Local\\Programs\\IntelliJ IDEA Ultimate\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\acichello\IdeaProjects\inventario-sistemas\frontend\src\pages\PCs" />
       <recent name="C:\Users\acichello\IdeaProjects\inventario-sistemas\backend" />
       <recent name="C:\Users\acichello\IdeaProjects\inventario-sistemas\frontend" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="npm dev" type="js.build_tools.npm">
-      <package-json value="$PROJECT_DIR$/package.json" />
+  <component name="RunManager" selected="npm.back">
+    <configuration name="back" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/backend/package.json" />
       <command value="run" />
       <scripts>
         <script value="dev" />
@@ -76,6 +91,20 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="front" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="npm.front" />
+      <item itemvalue="npm.back" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -102,7 +131,9 @@
       <workItem from="1753210047950" duration="1003000" />
       <workItem from="1753211502845" duration="887000" />
       <workItem from="1753212669567" duration="2822000" />
-      <workItem from="1753368589325" duration="4529000" />
+      <workItem from="1753368589325" duration="9638000" />
+      <workItem from="1753465407712" duration="3837000" />
+      <workItem from="1753964706611" duration="7024000" />
     </task>
     <task id="LOCAL-00001" summary="proyecto creado con vite y tailwindcss">
       <option name="closed" value="true" />
@@ -216,7 +247,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753368810287</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="cambios esteticos en el listado de PCs">
+      <option name="closed" value="true" />
+      <created>1753380897677</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1753380897677</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,15 +273,21 @@
     <MESSAGE value="agrego ordenamiento de tablas" />
     <MESSAGE value="funcionando, listo para desplegar en el servidor la primer parte" />
     <MESSAGE value="se agrega control del serial y alerta de maquina para reparar en el listado del inventario" />
-    <option name="LAST_COMMIT_MESSAGE" value="se agrega control del serial y alerta de maquina para reparar en el listado del inventario" />
+    <MESSAGE value="cambios esteticos en el listado de PCs" />
+    <option name="LAST_COMMIT_MESSAGE" value="cambios esteticos en el listado de PCs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/frontend/src/pages/PC.jsx</url>
+          <url>file://$PROJECT_DIR$/frontend/src/pages/PCs/DetallePC.jsx</url>
           <line>41</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/frontend/src/pages/PCs/InventarioPCs.jsx</url>
+          <line>213</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
