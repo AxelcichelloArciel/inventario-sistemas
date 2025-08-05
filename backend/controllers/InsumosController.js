@@ -12,6 +12,24 @@ export const getAllInsumos = async (req, res) => {
     }
 };
 
+export const addInsumo = async (req, res) => {
+    try{
+        const {categoria, insumo, marca, almacenamiento, observaciones, cantidad} = req.body;
+
+        if (!categoria || !insumo || !marca || !almacenamiento || !cantidad) {
+            return res.status(400).json({error: "Faltan datos requeridos"});
+        }
+        if (cantidad <= 0) {
+            return res.status(400).json({error: "La cantidad debe ser mayor a cero"});
+        }
+        const result = await Insumo.addInsumo({categoria, insumo, marca, almacenamiento, observaciones, cantidad});
+
+        res.status(201).json({message: "Insumo agregado correctamente", id: result});
+    } catch (error) {
+        res.status(500).json({error: "Error al agregar insumo", details: error.message});
+    }
+}
+
 export const consumirInsumo = async (req, res) => {
     const {id} = req.params;
     const {cantidad} = req.body;

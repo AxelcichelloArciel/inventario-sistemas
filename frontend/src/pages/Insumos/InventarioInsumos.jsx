@@ -5,7 +5,8 @@ import Swal from "sweetalert2";
 import * as XLSX from "xlsx";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
-import {MdDeleteForever, MdAdsClick } from "react-icons/md";
+import {MdDeleteForever, MdAdsClick} from "react-icons/md";
+import { CiViewList } from "react-icons/ci";
 
 
 const InventarioInsumos = () => {
@@ -23,16 +24,70 @@ const InventarioInsumos = () => {
         fetchInsumos();
     }, []); // Cargar insumos al montar el componente
 
+    const handleViewInsumo = async (insumo) => {
+        await Swal.fire({
+            title: `Detalle del insumo`,
+            html: `
+            <strong>Categoría:</strong> ${insumo.categoria}<br/>
+            <strong>Insumo:</strong> ${insumo.insumo}<br/>
+            <strong>Marca:</strong> ${insumo.marca}<br/>
+            <strong>Cantidad:</strong> ${insumo.cantidad}<br/>
+            <strong>Almacenamiento:</strong> ${insumo.almacenamiento}<br/>
+            <strong>Observaciones:</strong> ${insumo.observaciones || "-"}
+        `,
+            confirmButtonText: 'Cerrar'
+        });
+    }
+
+    const handleAddInsumo = async () => {
+        const {value: formValues} = await Swal.fire({
+            title: 'Añadir nuevo insumo',
+            html: `<input id="swal-categoria" class="swal2-input" placeholder="Categoría">` + `<input id="swal-insumo" class="swal2-input" placeholder="Insumo">` + `<input id="swal-marca" class="swal2-input" placeholder="Marca">` + `<input id="swal-cantidad" type="number" min="1" class="swal2-input" placeholder="Cantidad">` + `<input id="swal-almacenamiento" class="swal2-input" placeholder="Almacenamiento">` + `<input id="swal-observaciones" class="swal2-input" placeholder="Observaciones">`,
+            focusConfirm: false,
+            showCancelButton: true,
+            confirmButtonText: 'Añadir',
+            cancelButtonText: 'Cancelar',
+            preConfirm: () => {
+                const categoria = document.getElementById('swal-categoria').value.trim();
+                const insumo = document.getElementById('swal-insumo').value.trim();
+                const marca = document.getElementById('swal-marca').value.trim();
+                const cantidad = parseInt(document.getElementById('swal-cantidad').value, 10);
+                const almacenamiento = document.getElementById('swal-almacenamiento').value.trim();
+                const observaciones = document.getElementById('swal-observaciones').value.trim();
+
+                if (!categoria || !insumo || !marca || !cantidad || cantidad <= 0 || !almacenamiento) {
+                    Swal.showValidationMessage('Completa todos los campos y asegúrate que la cantidad sea válida');
+                    return false;
+                }
+                return {categoria, insumo, marca, cantidad, almacenamiento, observaciones};
+            }
+        });
+
+        if (formValues) {
+            try {
+                const res = await fetch("http://localhost:8888/insumos", {
+                    method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(formValues)
+                });
+                if (res.ok) {
+                    Swal.fire("¡Listo!", "Insumo añadido correctamente.", "success");
+                    fetchInsumos();
+                } else {
+                    Swal.fire("Error", "No se pudo añadir el insumo.", "error");
+                }
+            } catch {
+                Swal.fire("Error", "Ocurrió un error al añadir.", "error");
+            }
+        }
+    }
+
     const handleConsume = async (id, nombre, cantidadActual) => {
-        const { value: cantidadConsumida } = await Swal.fire({
+        const {value: cantidadConsumida} = await Swal.fire({
             title: `Consumir insumo: ${nombre}`,
             input: 'number',
             inputLabel: `Cantidad disponible: ${cantidadActual}`,
             inputPlaceholder: 'Ingrese la cantidad a consumir',
             inputAttributes: {
-                min: 1,
-                max: cantidadActual,
-                step: 1
+                min: 1, max: cantidadActual, step: 1
             },
             showCancelButton: true,
             confirmButtonText: 'Consumir',
@@ -52,8 +107,8 @@ const InventarioInsumos = () => {
             try {
                 const res = await fetch(`http://localhost:8888/insumos/${id}`, {
                     method: "PUT",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ cantidad: parseInt(cantidadConsumida, 10) })
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({cantidad: parseInt(cantidadConsumida, 10)})
                 });
                 if (res.ok) {
                     Swal.fire("¡Listo!", "Cantidad consumida correctamente.", "success");
@@ -127,11 +182,20 @@ const InventarioInsumos = () => {
             <div className="flex items-center gap-2">
 
                 <button
+                    className="text-green-600 hover:text-green-800"
+                    title="Ver insumo"
+                    onClick={() => handleViewInsumo(row)}
+                >
+                    <CiViewList size={18}/>
+
+                </button>
+
+                <button
                     className="text-blue-600 hover:text-blue-800"
                     title="Consumir insumo"
                     onClick={() => handleConsume(row.id_insumo, row.insumo, row.cantidad)}
                 >
-                    <MdAdsClick size={18} />
+                    <MdAdsClick size={18}/>
 
                 </button>
 
@@ -158,12 +222,12 @@ const InventarioInsumos = () => {
                     <p className="text-gray-700 text-sm sm:text-base">Aquí podrás gestionar el inventario de
                         insumos.</p>
                 </div>
-                <Link
-                    to="/inventarioInsumos/nuevoInsumo"
+                <button
+                    onClick={handleAddInsumo}
                     className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-2 sm:px-4 rounded shadow transition text-sm sm:text-base mt-2 sm:mt-0"
                 >
                     + Añadir insumo
-                </Link>
+                </button>
             </div>
             <div className="flex flex-col sm:flex-row gap-2 mb-2">
                 <button

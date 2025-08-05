@@ -22,6 +22,21 @@ export async function getInsumo(id) {
     }
 }
 
+export async  function addInsumo({categoria, insumo, marca, almacenamiento, observaciones, cantidad}) {
+    const query = `
+        INSERT INTO insumos (categoria, insumo, marca, almacenamiento, observaciones, cantidad)
+        VALUES (?, ?, ?, ?, ?, ?)
+    `;
+    const values = [categoria, insumo, marca, almacenamiento, observaciones, cantidad];
+
+    try {
+        const result = await db.run(query, values);
+        return result.lastID; // Retorna el ID del nuevo insumo
+    } catch (error) {
+        throw error;
+    }
+}
+
 export async function deleteInsumo(id) {
     const query = 'DELETE FROM insumos WHERE id_insumo = ?';
 

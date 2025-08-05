@@ -4,21 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94b81a4b-ce0c-4d4e-8417-ad86cd9774f6" name="Changes" comment="cambios esteticos en el listado de PCs">
-      <change afterPath="$PROJECT_DIR$/backend/model/Insumo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Insumos/InventarioInsumos.jsx" afterDir="false" />
+    <list default="true" id="94b81a4b-ce0c-4d4e-8417-ad86cd9774f6" name="Changes" comment="funcionando la correccion del insumo y la eliminacion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/PCsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/PCsController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/InsumosController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/InsumosController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/model/Insumo.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/model/Insumo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/emailService.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/emailService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/navBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/navBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Inventario.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/InventarioMonitores.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/InsumosController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/InventarioPCs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/PCs/InventarioPCs.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/PC.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/PCs/DetallePC.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/PCNueva.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/PCs/PCNueva.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/vite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Insumos/InventarioInsumos.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Insumos/InventarioInsumos.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +62,9 @@
     "nodejs_package_manager_path": "npm",
     "npm.back.executor": "Run",
     "npm.dev.executor": "Run",
+    "npm.front.executor": "Run",
     "npm.npm dev.executor": "Run",
+    "settings.editor.selected.configurable": "settings.sync",
     "ts.external.directory.path": "C:\\Users\\acichello\\AppData\\Local\\Programs\\IntelliJ IDEA Ultimate\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
@@ -80,7 +76,7 @@
       <recent name="C:\Users\acichello\IdeaProjects\inventario-sistemas\frontend" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.back">
+  <component name="RunManager" selected="npm.front">
     <configuration name="back" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/backend/package.json" />
       <command value="run" />
@@ -133,7 +129,8 @@
       <workItem from="1753212669567" duration="2822000" />
       <workItem from="1753368589325" duration="9638000" />
       <workItem from="1753465407712" duration="3837000" />
-      <workItem from="1753964706611" duration="7024000" />
+      <workItem from="1753964706611" duration="10221000" />
+      <workItem from="1754060622138" duration="7285000" />
     </task>
     <task id="LOCAL-00001" summary="proyecto creado con vite y tailwindcss">
       <option name="closed" value="true" />
@@ -255,7 +252,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753380897677</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="funcionando la correccion del insumo y la eliminacion">
+      <option name="closed" value="true" />
+      <created>1753977341844</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1753977341845</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,7 +279,8 @@
     <MESSAGE value="funcionando, listo para desplegar en el servidor la primer parte" />
     <MESSAGE value="se agrega control del serial y alerta de maquina para reparar en el listado del inventario" />
     <MESSAGE value="cambios esteticos en el listado de PCs" />
-    <option name="LAST_COMMIT_MESSAGE" value="cambios esteticos en el listado de PCs" />
+    <MESSAGE value="funcionando la correccion del insumo y la eliminacion" />
+    <option name="LAST_COMMIT_MESSAGE" value="funcionando la correccion del insumo y la eliminacion" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -291,5 +297,9 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
